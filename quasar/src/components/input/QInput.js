@@ -155,6 +155,8 @@ export default Vue.extend({
 
       const attrs = {
         rows: this.type === 'textarea' ? 6 : void 0,
+        'aria-invalid': this.hasError,
+        'aria-describedby': this.ariaDescribedbyId,
         ...this.$attrs,
         'aria-label': this.label,
         type: this.type,

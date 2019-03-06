@@ -118,6 +118,10 @@ export default Vue.extend({
       }
 
       return cls
+    },
+
+    ariaDescribedbyId () {
+      return `q-field__aria-describedby-${this._uid}`
     }
   },
 
@@ -200,11 +204,11 @@ export default Vue.extend({
 
       if (this.hasError === true) {
         if (this.computedErrorMessage !== void 0) {
-          msg = [ h('div', [ this.computedErrorMessage ]) ]
+          msg = [ h('div', { attrs: { id: this.ariaDescribedbyId } }, [ this.computedErrorMessage ]) ]
           key = this.computedErrorMessage
         }
         else {
-          msg = slot(this, 'error')
+          msg = [ h('div', { attrs: { id: this.ariaDescribedbyId } }, slot(this, 'error')) ]
           key = 'q--slot-error'
         }
       }
